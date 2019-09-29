@@ -1,0 +1,33 @@
+def FileLineCount(self,filename):
+    (filepath,tempfilename) = os.path.split(filename)
+    (shotname,extension) = os.path.splitext(tempfilename)
+    if extension == '.java' : # file type 
+        file = open(filename)
+        self.sourceFileCount += 1
+        allLines = file.readlines()
+        file.close()
+
+        lineCount    = 0
+        commentCount = 0
+        blankCount   = 0
+        codeCount    = 0
+        for eachLine in allLines
+            if eachLine != " " :
+                eachLine = eachLine.replace(" ","") #remove space    #remove tabIndent
+                if  eachLine.find('//') == 0 :  #LINECOMMENT 
+                    commentCount += 1
+                else :
+                    if eachLine == "":
+                        blankCount += 1
+                    else :
+                        codeCount += 1
+            lineCount = lineCount + 1
+        self.all += lineCount
+        self.allComment += commentCount
+        self.allBlank += blankCount
+        self.allSource += codeCount
+        
+        print( "          Total      :",  lineCount )
+        print ("         Comment    :", commentCount)
+        print( "          Blank      :", blankCount)
+        print ("        Source     :",  codeCount)
